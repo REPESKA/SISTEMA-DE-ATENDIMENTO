@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro - Gerenciador de Atendimentos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gerenciador de Atendimentos</h1>
+        <nav class="nav-links">
+            <a href="index.html" class="active">Cadastro</a>
+            <a href="controle.html">Controle</a>
+            <a href="atendentes.html">Atendentes</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card" style="max-width: 600px; margin: 0 auto;">
+            <h2 class="card-title">Novo Atendimento</h2>
+            <form id="form-cadastro">
+                <div class="form-group">
+                    <label for="data">Data</label>
+                    <input type="date" id="data" name="data" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="atendente">Nome do Atendente</label>
+                    <input list="lista-atendentes" id="atendente" name="atendente" placeholder="Ex: João Silva" autocomplete="off" required>
+                    <datalist id="lista-atendentes">
+                        <!-- Options carregadas via JS -->
+                    </datalist>
+                </div>
+
+                <div class="form-group">
+                    <label for="cliente">Nome do Cliente</label>
+                    <input type="text" id="cliente" name="cliente" placeholder="Ex: Maria Souza" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Status do Pagamento</label>
+                    <select id="status" name="status" required>
+                        <option value="Pago">Pago</option>
+                        <option value="Não Pago">Não Pago</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="servico">Tipo de Serviço</label>
+                    <input type="text" id="servico" name="servico" placeholder="Ex: Consultoria" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="valor">Valor Cobrado (R$)</label>
+                    <input type="number" id="valor" name="valor" step="0.01" min="0" placeholder="0.00" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="cidade">Cidade</label>
+                    <input type="text" id="cidade" name="cidade" placeholder="Ex: São Paulo" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <select id="estado" name="estado" required>
+                        <option value="" disabled selected>Selecione um Estado</option>
+                        <option value="AC">Acre (AC)</option>
+                        <option value="AL">Alagoas (AL)</option>
+                        <option value="AP">Amapá (AP)</option>
+                        <option value="AM">Amazonas (AM)</option>
+                        <option value="BA">Bahia (BA)</option>
+                        <option value="CE">Ceará (CE)</option>
+                        <option value="DF">Distrito Federal (DF)</option>
+                        <option value="ES">Espírito Santo (ES)</option>
+                        <option value="GO">Goiás (GO)</option>
+                        <option value="MA">Maranhão (MA)</option>
+                        <option value="MT">Mato Grosso (MT)</option>
+                        <option value="MS">Mato Grosso do Sul (MS)</option>
+                        <option value="MG">Minas Gerais (MG)</option>
+                        <option value="PA">Pará (PA)</option>
+                        <option value="PB">Paraíba (PB)</option>
+                        <option value="PR">Paraná (PR)</option>
+                        <option value="PE">Pernambuco (PE)</option>
+                        <option value="PI">Piauí (PI)</option>
+                        <option value="RJ">Rio de Janeiro (RJ)</option>
+                        <option value="RN">Rio Grande do Norte (RN)</option>
+                        <option value="RS">Rio Grande do Sul (RS)</option>
+                        <option value="RO">Rondônia (RO)</option>
+                        <option value="RR">Roraima (RR)</option>
+                        <option value="SC">Santa Catarina (SC)</option>
+                        <option value="SP">São Paulo (SP)</option>
+                        <option value="SE">Sergipe (SE)</option>
+                        <option value="TO">Tocantins (TO)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">
+                    Salvar Atendimento
+                </button>
+            </form>
+        </div>
+    </main>
+
+    <div id="toast" class="toast">Mensagem</div>
+
+    <script src="app.js"></script>
+</body>
+</html>

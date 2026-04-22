@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle - Gerenciador de Atendimentos</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Gerenciador de Atendimentos</h1>
+        <nav class="nav-links">
+            <a href="index.html">Cadastro</a>
+            <a href="controle.html" class="active">Controle</a>
+            <a href="atendentes.html">Atendentes</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- SEÇÃO A: Dashboard -->
+        <div class="dashboard-grid">
+            <div class="card metric-card">
+                <div class="metric-icon">📋</div>
+                <div class="metric-title">Total de Atendimentos</div>
+                <div class="metric-value" id="metric-total">0</div>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon text-success">✔️</div>
+                <div class="metric-title">Atendimentos Pagos</div>
+                <div class="metric-value text-success" id="metric-pagos">0</div>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon text-danger">⚠️</div>
+                <div class="metric-title">Atendimentos Não Pagos</div>
+                <div class="metric-value text-danger" id="metric-naopagos">0</div>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon text-success">💲</div>
+                <div class="metric-title">Valor Total Recebido</div>
+                <div class="metric-value text-success" id="metric-recebido">R$ 0,00</div>
+            </div>
+            <div class="card metric-card">
+                <div class="metric-icon text-warning">⏳</div>
+                <div class="metric-title">Valor a Receber</div>
+                <div class="metric-value text-warning" id="metric-receber">R$ 0,00</div>
+            </div>
+        </div>
+
+        <div class="card chart-container">
+            <h2 class="card-title" style="font-size: 1.2rem;">Atendimentos por Atendente</h2>
+            <div style="position: relative; height: 80%; width: 100%;">
+                <canvas id="chartAtendimentos"></canvas>
+            </div>
+        </div>
+
+        <!-- SEÇÃO B: Filtros -->
+        <div class="card" style="margin-bottom: 2rem;">
+            <div class="filters-section">
+                <input type="text" id="search-cliente" placeholder="🔍 Buscar por cliente...">
+                <input type="text" id="search-atendente" placeholder="🔍 Buscar por atendente...">
+                <input type="date" id="filter-data">
+                
+                <div class="filter-toggles">
+                    <button class="filter-toggle active" data-status="Todos">Todos</button>
+                    <button class="filter-toggle" data-status="Pago">Pagos</button>
+                    <button class="filter-toggle" data-status="Não Pago">Não Pagos</button>
+                </div>
+                
+                <button id="btn-clear-filters" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Limpar Pesquisa</button>
+            </div>
+        </div>
+
+        <!-- SEÇÃO C: Lista de Atendimentos -->
+        <h2 class="card-title" style="margin-bottom: 1rem; color: var(--color-white); border: none;">Lista de Atendimentos</h2>
+        <div class="attendance-grid" id="attendance-list">
+            <!-- Cards gerados via JS -->
+        </div>
+    </main>
+
+    <div id="toast" class="toast">Mensagem</div>
+
+    <script src="app.js"></script>
+</body>
+</html>
